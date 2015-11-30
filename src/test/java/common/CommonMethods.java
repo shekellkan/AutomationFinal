@@ -1,5 +1,6 @@
 package common;
 
+import framework.DriverManager;
 import ui.PageTransporter;
 import ui.pages.LoginPage;
 import ui.pages.MainPage;
@@ -19,18 +20,11 @@ public class CommonMethods {
     private static MainPage mainPage;
 
     /**
-     * declare variables
-     */
-    public static boolean isLogin = false;
-    public static boolean isLogout = false;
-
-    /**
      * this method is logout of the web page trello.com
      */
     public static void logOut() {
         topMenuPage = new TopMenuPage();
         topMenuPage.logout();
-        isLogout = true;
     }
 
     /**
@@ -38,7 +32,6 @@ public class CommonMethods {
      */
     public static void logIn() {
         loginPage = pageTransporter.navigateToLoginPage();
-        loginPage.loginSuccessful("miguel.terceros@fundacion-jala.org", "morfeo3730");
-        isLogin = true;
+        loginPage.loginSuccessful(Utils.getProperty("userName"), Utils.getProperty("password"));
     }
 }

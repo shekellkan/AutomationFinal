@@ -6,7 +6,12 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.Properties;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -94,6 +99,23 @@ public class Utils {
             return getStaleElem(by);
         } catch (NoSuchElementException ele) {
             return getStaleElem(by);
+        }
+    }
+
+    public static String getProperty(String property){
+        Properties config = new Properties();
+        FileInputStream file;
+        try {
+            file = new FileInputStream("src/main/resources/config.properties");
+            config.load(file);
+            String configProperty = config.getProperty(property);
+            return configProperty;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

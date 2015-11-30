@@ -20,7 +20,7 @@ Feature: Teams
     Given I go to create a team "Team_Members" with description "added members in this team"
       And I navigate until to menu Members
     When I add to member "Ivan Morales" with the email "ivan.morales@fundacion-jala.org"
-      And I invite a "Diego Olivera" with the email "diego823730@gmail.com"
+      And I invite a "Diego Olivera" with the email "diegoA323730@gmail.com"
      Then The  member "Ivan Morales" is added in the team
 
   Scenario: add the projects "Project_In_Team" to team "Teams_Projects"
